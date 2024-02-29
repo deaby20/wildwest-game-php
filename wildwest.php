@@ -1,6 +1,6 @@
 <?php
 
-// Function to display the story prompt and choices
+// display
 function displayStory() {
     echo "You find yourself standing in the dusty streets of a small frontier town, the sun beating down mercilessly. The air is tense with the promise of trouble brewing. As you glance around, you spot two figures eyeing each other down at the other end of the street. It's a classic Wild West standoff. What do you do?\n";
     echo "1. Draw your gun and intervene.\n";
@@ -9,7 +9,7 @@ function displayStory() {
     echo "\n"; // Add a newline for better readability
 }
 
-// Function to handle user choice
+// choice handle
 function handleChoice($choice, &$sheriffOutcomeDisplayed, &$reputation) {
     switch ($choice) {
         case 1:
@@ -30,7 +30,7 @@ function handleChoice($choice, &$sheriffOutcomeDisplayed, &$reputation) {
     }
 }
 
-// Function to display the third scenario prompt and choices
+// disp 3
 function displayThirdScenario() {
     echo "After handling the previous situation, you encounter a stranger on the street who seems distressed.\n";
     echo "They're being harassed by a group of bandits demanding money. What do you do?\n";
@@ -43,7 +43,7 @@ function displayThirdScenario() {
     echo "\n"; // Add a newline for better readability
 }
 
-// Function to display the fourth scenario prompt and choices
+// disp 4
 function displayFourthScenario() {
     echo "As you're about to leave town, you notice a runaway horse charging down the street with a child on its back.\n";
     echo "The child looks terrified and unable to control the horse. What do you do?\n";
@@ -56,7 +56,7 @@ function displayFourthScenario() {
     echo "\n"; // Add a newline for better readability
 }
 
-// Function to handle user choice for the third scenario
+// choice handle 3
 function handleThirdScenarioChoice($choice, &$reputation) {
     switch ($choice) {
         case 1:
@@ -88,7 +88,7 @@ function handleThirdScenarioChoice($choice, &$reputation) {
     }
 }
 
-// Function to handle user choice for the fourth scenario
+// choice handle 4
 function handleFourthScenarioChoice($choice, &$reputation) {
     switch ($choice) {
         case 1:
@@ -120,7 +120,7 @@ function handleFourthScenarioChoice($choice, &$reputation) {
     }
 }
 
-// Function to determine the player's title based on reputation
+// reputation
 function determineTitle($reputation) {
     if ($reputation >= 10) {
         return "Legendary Hero of the Wild West";
@@ -140,33 +140,33 @@ echo "Welcome to 'The Wild West Showdown'\n";
 $reputation = 0;
 $sheriffOutcomeDisplayed = false; // Initialize the variable to track if the sheriff's outcome has been displayed
 
-// Display the first scenario prompt and choices
+// disp 1
 displayStory();
 
-// Read user input from the command prompt
+// input
 echo "Enter your choice: ";
 $choice = trim(fgets(STDIN));
 
-// Validate and handle user choice
+// validate
 if ($choice == 1 || $choice == 2 || $choice == 3) {
     handleChoice($choice, $sheriffOutcomeDisplayed, $reputation);
     $reputation++;
     
-    // Display the third scenario prompt and choices
+    // disp 3
     displayThirdScenario();
     echo "Enter your choice for the third scenario: ";
     $choice = trim(fgets(STDIN));
     handleThirdScenarioChoice($choice, $reputation);
     $reputation++;
     
-    // Display the fourth scenario prompt and choices
+    // disp 4
     displayFourthScenario();
     echo "Enter your choice for the fourth scenario: ";
     $choice = trim(fgets(STDIN));
     handleFourthScenarioChoice($choice, $reputation);
     $reputation++;
     
-    // Display final reputation and title
+    // disp end
     echo "\nYour final reputation: $reputation\n";
     echo "Your title: " . determineTitle($reputation) . "\n";
     
